@@ -1,0 +1,47 @@
+﻿@model List<Student>
+@{
+    ViewData["Title"] = "Table";
+}
+
+<h1>List of Student</h1>
+
+<form>
+    @if(Model.Count() > 0) {
+    <table class="table">
+        <th>
+            <label for="Id">Id</label>
+        </th>
+        <th>
+            <label for="Name">Name</label>
+        </th>
+        <th>
+            <label for="Phone">Phone</label>
+        </th>
+        <th>
+            <label for="Adress">Adress</label>
+        </th>
+        @foreach(var e in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(m => e.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(m => e.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(m => e.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(m => e.Address)
+        </td>
+        <td>
+            <button class="btn btn-danger" name="Id" value=@e.Id asp-controller="Student" asp-action="Delete">Delete</button>
+            <button class="btn btn-primary text-white" name="Id" value=@e.Id formmethod="put" asp-controller="Student" asp-action="Edit">Edit</button>
+        </td>
+    </tr>
+        }
+    </table>
+    } else {
+        <p>Dont have any students</p>
+    }
+</form>
