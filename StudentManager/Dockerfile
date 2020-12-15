@@ -36,8 +36,8 @@ COPY --from=build-env /app/out .
 # ENV Kestrel__Certificates__Default__Path=/app/cert-aspnetcore.pfx
 # ENV Kestrel__Certificates__Default__Password=password
 
-EXPOSE 80
-EXPOSE 443
+EXPOSE 8000
+EXPOSE 8001
 # ENV ASPNETCORE_URLS=https://[::]:443;http://[::]:80;
 
 ENTRYPOINT ["dotnet", "StudentManager.dll"]
