@@ -38,6 +38,7 @@ COPY --from=build-env /app/out .
 
 EXPOSE 8000
 EXPOSE 8001
+# ENV ASPNETCORE_URLS=http://[::]:$PORT;
 # ENV ASPNETCORE_URLS=https://[::]:443;http://[::]:80;
 
-ENTRYPOINT ["dotnet", "StudentManager.dll"]
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet StudentManager.dll
